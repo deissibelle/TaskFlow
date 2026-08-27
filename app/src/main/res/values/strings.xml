@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">TaskFlow</string>
+    <string name="onboarding_tagline">Restez organisé, atteignez vos objectifs et devenez plus productif chaque jour.</string>
+    <string name="onboarding_get_started">Commencer</string>
+    <string name="onboarding_login">Se connecter</string>
 </resources>

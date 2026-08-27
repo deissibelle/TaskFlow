@@ -8,7 +8,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.ui.Modifier
-import cm.sibcodelab.taskflow.presentation.tasklist.TaskListScreen
+import cm.sibcodelab.taskflow.presentation.onboarding.OnboardingScreen
 import cm.sibcodelab.taskflow.ui.theme.TaskFlowTheme
 
 class MainActivity : ComponentActivity() {
@@ -17,9 +17,11 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             TaskFlowTheme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    TaskListScreen(modifier = Modifier.padding(innerPadding)
-                    )
+                Scaffold(
+                    modifier = Modifier.fillMaxSize()
+                ) { padding ->
+                    OnboardingScreen(modifier = Modifier.padding(padding))
+
                 }
             }
         }
