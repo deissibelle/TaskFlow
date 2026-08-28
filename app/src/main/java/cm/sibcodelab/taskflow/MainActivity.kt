@@ -8,7 +8,8 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.ui.Modifier
-import cm.sibcodelab.taskflow.presentation.onboarding.OnboardingScreen
+import cm.sibcodelab.taskflow.presentation.auth.LoginScreen
+import cm.sibcodelab.taskflow.presentation.auth.RegisterScreen
 import cm.sibcodelab.taskflow.ui.theme.TaskFlowTheme
 
 class MainActivity : ComponentActivity() {
@@ -20,7 +21,7 @@ class MainActivity : ComponentActivity() {
                 Scaffold(
                     modifier = Modifier.fillMaxSize()
                 ) { padding ->
-                    OnboardingScreen(modifier = Modifier.padding(padding))
+                    RegisterScreen(modifier = Modifier.padding(padding))
 
                 }
             }

@@ -2,5 +2,22 @@
     <string name="app_name">TaskFlow</string>
     <string name="onboarding_tagline">Restez organisé, atteignez vos objectifs et devenez plus productif chaque jour.</string>
     <string name="onboarding_get_started">Commencer</string>
-    <string name="onboarding_login">Se connecter</string>
+    <string name="login">Se connecter</string>
+
+    <string name="login_title">Bon retour</string>
+    <string name="login_subtitle">Connectez-vous pour continuer</string>
+    <string name="login_email_label">Email</string>
+    <string name="login_password_label">Mot de passe</string>
+    <string name="login_no_account">Pas encore de compte ?</string>
+    <string name="signup">S\'inscrire</string>
+
+    <string name="register_title">Créer un compte</string>
+    <string name="register_subtitle">Commencez à organiser vos tâches</string>
+    <string name="register_name_label">Nom complet</string>
+    <string name="register_email_label">Email</string>
+    <string name="register_password_label">Mot de passe</string>
+    <string name="register_confirm_password_label">Confirmer le mot de passe</string>
+    <string name="register_terms">J\'accepte les conditions d\'utilisation</string>
+    <string name="register_has_account">Déjà un compte ?</string>
+    <string name="register_password_hint">Au moins 6 caractères</string>
 </resources>
