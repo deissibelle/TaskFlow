@@ -20,4 +20,40 @@
     <string name="register_terms">J\'accepte les conditions d\'utilisation</string>
     <string name="register_has_account">Déjà un compte ?</string>
     <string name="register_password_hint">Au moins 6 caractères</string>
+
+    <string name="home_greeting">Bonjour, %1$s 👋</string>
+    <string name="home_subtitle">Voici un aperçu de votre journée.</string>
+    <string name="home_stat_total">Total tâches</string>
+    <string name="home_stat_completed">Terminées</string>
+    <string name="home_stat_overdue">En retard</string>
+    <string name="home_today_section">Aujourd\'hui</string>
+    <string name="home_see_all">Voir tout</string>
+
+    <string name="intro_tagline">Votre productivité, organisée.</string>
+    <string name="intro_description">TaskFlow est une application complète de gestion de tâches avec rappels, statistiques et mode hors ligne.</string>
+    <string name="intro_feature_tasks">Gestion intelligente des tâches</string>
+    <string name="intro_feature_reminders">Rappels et notifications</string>
+    <string name="intro_feature_stats">Statistiques détaillées</string>
+    <string name="intro_feature_offline">Mode hors ligne</string>
+    <string name="intro_feature_security">Sécurisé et privé</string>
+    <string name="intro_theme_label">Disponible en thème clair et sombre</string>
+
+    <string name="add_task_title">Ajouter une tâche</string>
+    <string name="add_task_title_label">Titre</string>
+    <string name="add_task_title_placeholder">Ex: Apprendre Jetpack Compose</string>
+    <string name="add_task_description_label">Description</string>
+    <string name="add_task_description_placeholder">Ajoutez plus de détails…</string>
+    <string name="add_task_due_date_label">Date d\'échéance</string>
+    <string name="add_task_priority_label">Priorité</string>
+    <string name="add_task_priority_low">Basse</string>
+    <string name="add_task_priority_medium">Moyenne</string>
+    <string name="add_task_priority_high">Haute</string>
+    <string name="add_task_category_label">Catégorie</string>
+    <string name="add_task_save">Enregistrer</string>
+
+    <string name="nav_home">Accueil</string>
+    <string name="nav_tasks">Tâches</string>
+    <string name="nav_calendar">Calendrier</string>
+    <string name="nav_reports">Rapports</string>
+    <string name="nav_profile">Profil</string>
 </resources>

@@ -5,7 +5,9 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.BarChart
 import androidx.compose.material.icons.filled.Check
+import androidx.compose.material.icons.filled.CloudOff
 import androidx.compose.material.icons.filled.Create
 import androidx.compose.material.icons.filled.Notifications
 import androidx.compose.material.icons.filled.Share
@@ -157,12 +159,12 @@ private fun OnboardingHero() {
             modifier = Modifier.align(Alignment.TopEnd)
         )
         MiniBadge(
-            icon = Icons.Filled.Create,
+            icon = Icons.Filled.CloudOff,
             tint = MaterialTheme.colorScheme.onSurfaceVariant,
             modifier = Modifier.align(Alignment.BottomStart)
         )
         MiniBadge(
-            icon = Icons.Filled.Share,
+            icon = Icons.Filled.BarChart,
             tint = MaterialTheme.colorScheme.onSurfaceVariant,
             modifier = Modifier.align(Alignment.BottomEnd)
         )
