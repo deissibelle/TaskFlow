@@ -56,4 +56,17 @@
     <string name="nav_calendar">Calendrier</string>
     <string name="nav_reports">Rapports</string>
     <string name="nav_profile">Profil</string>
+
+    <string name="add_task_reminder_label">Rappel</string>
+    <string name="add_task_recurrence_label">Récurrent</string>
+    <string name="add_task_recurrence_none">Ne pas répéter</string>
+    <string name="add_task_recurrence_daily">Tous les jours</string>
+    <string name="add_task_recurrence_weekly">Toutes les semaines</string>
+    <string name="add_task_recurrence_monthly">Tous les mois</string>
+
+    <string name="tasks_title">Tâches</string>
+    <string name="tasks_filter_all">Toutes</string>
+    <string name="tasks_filter_active">En cours</string>
+    <string name="tasks_filter_done">Terminées</string>
+    <string name="tasks_search_placeholder">Rechercher une tâche…</string>
 </resources>

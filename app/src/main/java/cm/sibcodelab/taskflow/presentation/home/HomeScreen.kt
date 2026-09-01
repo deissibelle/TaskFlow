@@ -81,12 +81,7 @@ fun HomeScreen(
                 )
             )
         },
-        bottomBar = {
-            TaskFlowBottomBar(
-                selectedTab = selectedTab,
-                onTabSelected = { selectedTab = it }
-            )
-        },
+
         floatingActionButton = {
             FloatingActionButton(
                 onClick = onAddTaskClick,
@@ -95,7 +90,14 @@ fun HomeScreen(
             ) {
                 Icon(Icons.Filled.Add, contentDescription = null, tint = Color.White)
             }
-        }
+        },
+        bottomBar = {
+            TaskFlowBottomBar(
+                selectedTab = selectedTab,
+                onTabSelected = { selectedTab = it }
+            )
+        },
+
     ) { innerPadding ->
         LazyColumn(
             modifier = Modifier

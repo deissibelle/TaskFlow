@@ -6,8 +6,10 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material.icons.filled.ArrowDropDown
 import androidx.compose.material.icons.filled.Check
 import androidx.compose.material.icons.filled.DateRange
+import androidx.compose.material.icons.filled.Notifications
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -26,6 +28,13 @@ import cm.sibcodelab.taskflow.ui.theme.PriorityLow
 import cm.sibcodelab.taskflow.ui.theme.PriorityMedium
 import cm.sibcodelab.taskflow.ui.theme.TaskFlowTheme
 
+@Composable
+private fun recurrenceOptions() = listOf(
+    stringResource(R.string.add_task_recurrence_none),
+    stringResource(R.string.add_task_recurrence_daily),
+    stringResource(R.string.add_task_recurrence_weekly),
+    stringResource(R.string.add_task_recurrence_monthly)
+)
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun AddTaskScreen(
@@ -122,8 +131,38 @@ fun AddTaskScreen(
                 selected = selectedPriority,
                 onSelect = { selectedPriority = it }
             )
+            Spacer(modifier = Modifier.height(20.dp))
 
-            Spacer(modifier = Modifier.height(32.dp))
+            FieldLabel(stringResource(R.string.add_task_category_label))
+            var selectedCategory by remember { mutableStateOf("Études") }
+            DropdownField(
+                value = selectedCategory,
+                options = listOf("Études", "Travail", "Personnel", "Santé"),
+                onOptionSelected = { selectedCategory = it }
+            )
+
+            Spacer(modifier = Modifier.height(20.dp))
+
+            FieldLabel(stringResource(R.string.add_task_reminder_label))
+            OutlinedTextField(
+                value = "26 mai 2024, 17:30",
+                onValueChange = {},
+                readOnly = true,
+                trailingIcon = { Icon(Icons.Filled.Notifications, contentDescription = null) },
+                shape = RoundedCornerShape(12.dp),
+                modifier = Modifier.fillMaxWidth()
+            )
+            Spacer(modifier = Modifier.height(20.dp))
+            FieldLabel(stringResource(R.string.add_task_recurrence_label))
+            val recurrenceOptionsList = recurrenceOptions()
+            var selectedRecurrence by remember { mutableStateOf(recurrenceOptionsList[0]) }
+            DropdownField(
+                value = selectedRecurrence,
+                options = recurrenceOptionsList,
+                onOptionSelected = { selectedRecurrence = it }
+            )
+
+            Spacer(modifier = Modifier.height(16.dp))
 
             Button(
                 onClick = { onSaveClick(title, description, selectedPriority) },
@@ -151,7 +190,46 @@ private fun FieldLabel(text: String) {
     )
     Spacer(modifier = Modifier.height(8.dp))
 }
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+private fun DropdownField(
+    value: String,
+    options: List<String>,
+    onOptionSelected: (String) -> Unit
+) {
+    var expanded by remember { mutableStateOf(false) }
 
+    ExposedDropdownMenuBox(
+        expanded = expanded,
+        onExpandedChange = { expanded = it }
+    ) {
+        OutlinedTextField(
+            value = value,
+            onValueChange = {},
+            readOnly = true,
+            trailingIcon = { Icon(Icons.Filled.ArrowDropDown, contentDescription = null) },
+            shape = RoundedCornerShape(12.dp),
+            modifier = Modifier
+                .fillMaxWidth()
+                .menuAnchor()
+        )
+
+        ExposedDropdownMenu(
+            expanded = expanded,
+            onDismissRequest = { expanded = false }
+        ) {
+            options.forEach { option ->
+                DropdownMenuItem(
+                    text = { Text(option) },
+                    onClick = {
+                        onOptionSelected(option)
+                        expanded = false
+                    }
+                )
+            }
+        }
+    }
+}
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 private fun PrioritySelector(

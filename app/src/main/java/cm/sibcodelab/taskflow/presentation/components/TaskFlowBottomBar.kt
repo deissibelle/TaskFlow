@@ -30,8 +30,13 @@ fun TaskFlowBottomBar(
                         contentDescription = null
                     )
                 },
-                label = { Text(stringResource(tab.labelRes)) },
-                colors = NavigationBarItemDefaults.colors(
+                label = {
+                    Text(
+                        text = stringResource(tab.labelRes),
+                        style = MaterialTheme.typography.labelSmall,
+                        maxLines = 1
+                    )
+                },                colors = NavigationBarItemDefaults.colors(
                     selectedIconColor = MaterialTheme.colorScheme.primary,
                     selectedTextColor = MaterialTheme.colorScheme.primary,
                     unselectedIconColor = MaterialTheme.colorScheme.onSurfaceVariant,
