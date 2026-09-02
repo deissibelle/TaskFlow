@@ -9,6 +9,7 @@ import cm.sibcodelab.taskflow.domain.model.Priority
 import cm.sibcodelab.taskflow.domain.model.Task
 import cm.sibcodelab.taskflow.presentation.home.HomeScreen
 import cm.sibcodelab.taskflow.presentation.taskform.AddTaskScreen
+import cm.sibcodelab.taskflow.presentation.tasklist.TaskDetailScreen
 import cm.sibcodelab.taskflow.presentation.tasklist.TaskListScreen
 import cm.sibcodelab.taskflow.ui.theme.TaskFlowTheme
 
@@ -27,16 +28,25 @@ class MainActivity : ComponentActivity() {
 //                        Task(3, "Réviser le cours de Kotlin", "", Priority.LOW, isCompleted = true),
 //                    )
 //                )
-                TaskListScreen(
-                    tasks = listOf(
-                        Task(1, "Finir le rapport de stage", "Détails du rapport", Priority.HIGH),
-                        Task(2, "Réunion avec l'équipe", "", Priority.MEDIUM),
-                        Task(3, "Réviser le cours de Kotlin", "", Priority.LOW, isCompleted = true),
-                        Task(4, "Acheter des livres", "", Priority.MEDIUM),
-                        Task(5, "Planifier le sprint", "", Priority.LOW)
+//                TaskListScreen(
+//                    tasks = listOf(
+//                        Task(1, "Finir le rapport de stage", "Détails du rapport", Priority.HIGH),
+//                        Task(2, "Réunion avec l'équipe", "", Priority.MEDIUM),
+//                        Task(3, "Réviser le cours de Kotlin", "", Priority.LOW, isCompleted = true),
+//                        Task(4, "Acheter des livres", "", Priority.MEDIUM),
+//                        Task(5, "Planifier le sprint", "", Priority.LOW)
+//                    )
+//                )
+//                AddTaskScreen()
+
+                TaskDetailScreen(
+                    task = Task(
+                        id = 1,
+                        title = "Finir le rapport de stage",
+                        description = "Finaliser toutes les sections et préparer la soutenance.",
+                        priority = Priority.HIGH
                     )
                 )
-//                AddTaskScreen()
             }
         }
     }

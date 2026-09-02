@@ -69,4 +69,16 @@
     <string name="tasks_filter_active">En cours</string>
     <string name="tasks_filter_done">Terminées</string>
     <string name="tasks_search_placeholder">Rechercher une tâche…</string>
+
+    <string name="calendar_title">Mai 2024</string>
+    <string name="calendar_day_tasks_title">Tâches du %1$d mai</string>
+
+    <string name="detail_title">Détails de la tâche</string>
+    <string name="detail_due_date">Date d\'échéance</string>
+    <string name="detail_category">Catégorie</string>
+    <string name="detail_reminder">Rappel</string>
+    <string name="detail_recurrence">Récurrent</string>
+    <string name="detail_created_at">Créée le</string>
+    <string name="detail_edit">Modifier</string>
+    <string name="detail_delete">Supprimer</string>
 </resources>
