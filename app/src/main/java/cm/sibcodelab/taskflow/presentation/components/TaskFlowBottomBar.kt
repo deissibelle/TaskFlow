@@ -36,7 +36,8 @@ fun TaskFlowBottomBar(
                         style = MaterialTheme.typography.labelSmall,
                         maxLines = 1
                     )
-                },                colors = NavigationBarItemDefaults.colors(
+                },
+                colors = NavigationBarItemDefaults.colors(
                     selectedIconColor = MaterialTheme.colorScheme.primary,
                     selectedTextColor = MaterialTheme.colorScheme.primary,
                     unselectedIconColor = MaterialTheme.colorScheme.onSurfaceVariant,

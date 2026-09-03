@@ -92,4 +92,18 @@
     <string name="reports_priority_distribution">Répartition par priorité</string>
     <string name="reports_delta">+12%% vs semaine dernière</string>
 
+
+    <string name="stats_title">Statistiques détaillées</string>
+    <string name="stats_period_week">Semaine</string>
+    <string name="stats_period_month">Mois</string>
+    <string name="stats_period_year">Année</string>
+    <string name="stats_global_productivity">Productivité globale</string>
+    <string name="stats_status_good">Très bien ! 🎉</string>
+    <string name="stats_time_spent">Temps consacré</string>
+    <string name="stats_tasks_created">Tâches créées</string>
+    <string name="stats_categories">Catégories</string>
+    <string name="stats_time_spent_delta">+2h vs semaine dernière</string>
+
+
+
 </resources>

@@ -4,17 +4,13 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.ui.res.stringResource
-import cm.sibcodelab.taskflow.domain.model.HomeStats
-import cm.sibcodelab.taskflow.domain.model.Priority
-import cm.sibcodelab.taskflow.domain.model.Task
-import cm.sibcodelab.taskflow.presentation.home.HomeScreen
-import cm.sibcodelab.taskflow.presentation.reports.DayCompletion
-import cm.sibcodelab.taskflow.presentation.reports.PrioritySlice
+import cm.sibcodelab.taskflow.domain.model.DayCompletion
+import cm.sibcodelab.taskflow.domain.model.PrioritySlice
+import cm.sibcodelab.taskflow.presentation.reports.CategoryBreakdown
+import cm.sibcodelab.taskflow.presentation.reports.DetailedStatsScreen
 import cm.sibcodelab.taskflow.presentation.reports.ReportsScreen
-import cm.sibcodelab.taskflow.presentation.taskform.AddTaskScreen
-import cm.sibcodelab.taskflow.presentation.tasklist.TaskDetailScreen
-import cm.sibcodelab.taskflow.presentation.tasklist.TaskListScreen
 import cm.sibcodelab.taskflow.ui.theme.PriorityHigh
 import cm.sibcodelab.taskflow.ui.theme.PriorityLow
 import cm.sibcodelab.taskflow.ui.theme.PriorityMedium
@@ -54,26 +50,38 @@ class MainActivity : ComponentActivity() {
 //                        priority = Priority.HIGH
 //                    )
 //                )
-                ReportsScreen(
-                    percent = 78,
-                    completedCount = 24,
-                    inProgressCount = 8,
-                    overdueCount = 3,
-                    weeklyData = listOf(
-                        DayCompletion("Lun", 4),
-                        DayCompletion("Mar", 7),
-                        DayCompletion("Mer", 3),
-                        DayCompletion("Jeu", 9),
-                        DayCompletion("Ven", 5),
-                        DayCompletion("Sam", 8),
-                        DayCompletion("Dim", 2)
-                    ),
-                    priorityData = listOf(
-                        PrioritySlice("Haute", 35, PriorityHigh),
-                        PrioritySlice("Moyenne", 45, PriorityMedium),
-                        PrioritySlice("Basse", 20, PriorityLow)
-                    ),
-                    delta = stringResource(R.string.reports_delta),
+//                ReportsScreen(
+//                    percent = 78,
+//                    completedCount = 24,
+//                    inProgressCount = 8,
+//                    overdueCount = 3,
+//                    weeklyData = listOf(
+//                        DayCompletion("Lun", 4),
+//                        DayCompletion("Mar", 7),
+//                        DayCompletion("Mer", 3),
+//                        DayCompletion("Jeu", 9),
+//                        DayCompletion("Ven", 5),
+//                        DayCompletion("Sam", 8),
+//                        DayCompletion("Dim", 2)
+//                    ),
+//                    priorityData = listOf(
+//                        PrioritySlice("Haute", 35, PriorityHigh),
+//                        PrioritySlice("Moyenne", 45, PriorityMedium),
+//                        PrioritySlice("Basse", 20, PriorityLow)
+//                    ),
+//                    delta = stringResource(R.string.reports_delta),
+//                )
+                DetailedStatsScreen(
+                    productivityPercent = 78,
+                    weeklyProductivity = listOf(65, 70, 55, 80, 75, 90, 78),
+                    timeSpent = "18h 30m",
+                    tasksCreated = 32,
+                    tasksCreatedDelta = "+8 vs semaine dernière",
+                    categories = listOf(
+                        CategoryBreakdown("Études", 12, 37, cm.sibcodelab.taskflow.ui.theme.PriorityMedium),
+                        CategoryBreakdown("Travail", 10, 31, MaterialTheme.colorScheme.primary),
+                        CategoryBreakdown("Personnel", 6, 19, PriorityLow)
+                    )
                 )
             }
         }
