@@ -81,4 +81,15 @@
     <string name="detail_created_at">Créée le</string>
     <string name="detail_edit">Modifier</string>
     <string name="detail_delete">Supprimer</string>
+
+    <string name="reports_title">Rapports</string>
+    <string name="reports_period">Cette semaine</string>
+    <string name="reports_success_rate">Taux de réussite</string>
+    <string name="reports_completed">Terminées</string>
+    <string name="reports_in_progress">En cours</string>
+    <string name="reports_overdue">En retard</string>
+    <string name="reports_completed_by_day">Tâches terminées par jour</string>
+    <string name="reports_priority_distribution">Répartition par priorité</string>
+    <string name="reports_delta">+12%% vs semaine dernière</string>
+
 </resources>
