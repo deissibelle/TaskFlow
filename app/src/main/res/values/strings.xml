@@ -104,6 +104,21 @@
     <string name="stats_categories">Catégories</string>
     <string name="stats_time_spent_delta">+2h vs semaine dernière</string>
 
+    <string name="reminders_title">Rappels</string>
+    <string name="reminders_enable">Activer les rappels</string>
 
+    <string name="settings_title">Paramètres</string>
+    <string name="settings_general">Général</string>
+    <string name="settings_theme">Thème</string>
+    <string name="settings_theme_dark">Sombre</string>
+    <string name="settings_language">Langue</string>
+    <string name="settings_language_value">Français</string>
+    <string name="settings_notifications">Notifications</string>
+    <string name="settings_reminders">Rappels</string>
+    <string name="settings_sounds">Sons</string>
+    <string name="settings_vibrations">Vibrations</string>
+    <string name="settings_data">Données</string>
+    <string name="settings_backup">Sauvegarde</string>
+    <string name="settings_backup_subtitle">Dernière : Aujourd\'hui, 08:30</string>
 
 </resources>
