@@ -49,9 +49,10 @@ fun ReportsScreen(
     overdueCount: Int,
     weeklyData: List<DayCompletion>,
     priorityData: List<PrioritySlice>,
+    selectedTab: BottomNavTab = BottomNavTab.REPORTS,
+    onTabSelected: (BottomNavTab) -> Unit = {},
     modifier: Modifier = Modifier
 ) {
-    var selectedTab by remember { mutableStateOf(BottomNavTab.HOME) }
 
     Scaffold(
         modifier = modifier,
@@ -71,11 +72,13 @@ fun ReportsScreen(
         },
 
         bottomBar = {
-            TaskFlowBottomBar(
-                selectedTab = selectedTab,
-                onTabSelected = { selectedTab = it }
-            )
-        },
+
+                TaskFlowBottomBar(
+                    selectedTab = selectedTab,
+                    onTabSelected = onTabSelected
+                )
+
+        }
     ) { innerPadding ->
         Column(
             modifier = Modifier

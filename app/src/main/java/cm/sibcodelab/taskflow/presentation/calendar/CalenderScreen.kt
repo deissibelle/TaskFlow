@@ -44,10 +44,11 @@ fun CalendarScreen(
     tasksByDay: Map<Int, List<Task>>,
     modifier: Modifier = Modifier,
     onAddTaskClick: () -> Unit = {},
+    selectedTab: BottomNavTab,
+    onTabSelected: (BottomNavTab) -> Unit,
     onTaskCheckedChange: (Task, Boolean) -> Unit = { _, _ -> }
 ) {
     var selectedDay by remember { mutableIntStateOf(26) }
-    var selectedTab by remember { mutableStateOf(BottomNavTab.CALENDAR) }
 
     val dayTasks = tasksByDay[selectedDay].orEmpty()
 
@@ -57,7 +58,7 @@ fun CalendarScreen(
         bottomBar = {
             TaskFlowBottomBar(
                 selectedTab = selectedTab,
-                onTabSelected = { selectedTab = it }
+                onTabSelected = { selectedTab  }
             )
         },
         floatingActionButton = {
@@ -194,13 +195,15 @@ private fun CalendarScreenPreview() {
         CalendarScreen(
             tasksByDay = mapOf(
                 26 to listOf(
-                    Task(1, "Apprendre Jetpack Compose", "", Priority.MEDIUM),
-                    Task(2, "Réviser le cours de Kotlin", "", Priority.LOW, isCompleted = true)
+                    Task(1, "Finir le rapport de stage", "Détails du rapport", Priority.HIGH),
+                    Task(2, "Réunion avec l'équipe", "", Priority.MEDIUM)
                 ),
                 28 to listOf(
-                    Task(3, "Méditation", "", Priority.LOW)
+                    Task(3, "Réviser le cours de Kotlin", "", Priority.LOW, isCompleted = true)
                 )
-            )
+            ),
+            selectedTab = BottomNavTab.CALENDAR,
+            onTabSelected = {}
         )
     }
-}
+    }

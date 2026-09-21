@@ -49,11 +49,12 @@ fun HomeScreen(
     todayTasks: List<Task>,
     onAddTaskClick: () -> Unit = {},
     onSeeAllClick: () -> Unit = {},
+    selectedTab: BottomNavTab,
+    onTabSelected: (BottomNavTab) -> Unit,
     onTaskCheckedChange: (Task, Boolean) -> Unit = { _, _ -> },
     onMenuClick: () -> Unit = {},
     onNotificationsClick: () -> Unit = {}
 ) {
-    var selectedTab by remember { mutableStateOf(BottomNavTab.HOME) }
 
     Scaffold(
         modifier = modifier,
@@ -94,7 +95,7 @@ fun HomeScreen(
         bottomBar = {
             TaskFlowBottomBar(
                 selectedTab = selectedTab,
-                onTabSelected = { selectedTab = it }
+                onTabSelected = onTabSelected
             )
         },
 
@@ -249,14 +250,6 @@ private fun HomeTaskRow(
 @Composable
 private fun HomeScreenPreview() {
     TaskFlowTheme {
-        HomeScreen(
-            userName = "Sibelle",
-            stats = HomeStats(total = 12, completed = 5, overdue = 3),
-            todayTasks = listOf(
-                Task(1, "Finir le rapport de stage", "", Priority.HIGH),
-                Task(2, "Réunion avec l'équipe", "", Priority.MEDIUM),
-                Task(3, "Réviser le cours de Kotlin", "", Priority.LOW, isCompleted = true)
-            )
-        )
+
     }
 }

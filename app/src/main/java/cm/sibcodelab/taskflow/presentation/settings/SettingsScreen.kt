@@ -1,13 +1,13 @@
 package cm.sibcodelab.taskflow.presentation.settings
 
-import androidx.compose.foundation.background
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.*
+import androidx.compose.material.icons.filled.CloudUpload
+import androidx.compose.material.icons.filled.DarkMode
+import androidx.compose.material.icons.filled.Language
+import androidx.compose.material.icons.filled.Notifications
+import androidx.compose.material.icons.filled.VolumeUp
+import androidx.compose.material.icons.filled.Vibration
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -22,6 +22,8 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import cm.sibcodelab.taskflow.R
+import cm.sibcodelab.taskflow.presentation.components.SettingsNavRow
+import cm.sibcodelab.taskflow.presentation.components.SettingsSection
 import cm.sibcodelab.taskflow.ui.theme.TaskFlowTheme
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -32,6 +34,10 @@ fun SettingsScreen(
     onLanguageClick: () -> Unit = {},
     onBackupClick: () -> Unit = {}
 ) {
+    var remindersEnabled by remember { mutableStateOf(true) }
+    var soundsEnabled by remember { mutableStateOf(true) }
+    var vibrationsEnabled by remember { mutableStateOf(true) }
+
     Scaffold(
         modifier = modifier,
         containerColor = MaterialTheme.colorScheme.background,
@@ -50,136 +56,92 @@ fun SettingsScreen(
             modifier = Modifier
                 .padding(innerPadding)
                 .fillMaxSize()
-                .verticalScroll(rememberScrollState())
                 .padding(horizontal = 20.dp)
         ) {
             Spacer(modifier = Modifier.height(8.dp))
 
             SettingsSection(title = stringResource(R.string.settings_general)) {
-                SettingsRow(
+                SettingsNavRow(
                     icon = Icons.Filled.DarkMode,
                     label = stringResource(R.string.settings_theme),
-                    modifier = Modifier.clickable(onClick = onThemeClick)
-                ) {
-                    TrailingValueChevron(stringResource(R.string.settings_theme_dark))
-                }
-                SettingsRow(
+                    value = stringResource(R.string.settings_theme_value),
+                    onClick = onThemeClick
+                )
+                SettingsNavRow(
                     icon = Icons.Filled.Language,
                     label = stringResource(R.string.settings_language),
-                    modifier = Modifier.clickable(onClick = onLanguageClick)
-                ) {
-                    TrailingValueChevron(stringResource(R.string.settings_language_value))
-                }
-            }
-
-            Spacer(modifier = Modifier.height(24.dp))
-
-            var remindersEnabled by remember { mutableStateOf(true) }
-            var soundsEnabled by remember { mutableStateOf(true) }
-            var vibrationsEnabled by remember { mutableStateOf(true) }
-
-            SettingsSection(title = stringResource(R.string.settings_notifications)) {
-                SettingsRow(icon = Icons.Filled.Notifications, label = stringResource(R.string.settings_reminders)) {
-                    Switch(checked = remindersEnabled, onCheckedChange = { remindersEnabled = it })
-                }
-                SettingsRow(icon = Icons.Filled.VolumeUp, label = stringResource(R.string.settings_sounds)) {
-                    Switch(checked = soundsEnabled, onCheckedChange = { soundsEnabled = it })
-                }
-                SettingsRow(icon = Icons.Filled.Vibration, label = stringResource(R.string.settings_vibrations)) {
-                    Switch(checked = vibrationsEnabled, onCheckedChange = { vibrationsEnabled = it })
-                }
-            }
-
-            Spacer(modifier = Modifier.height(24.dp))
-
-            SettingsSection(title = stringResource(R.string.settings_data)) {
-                SettingsRow(
-                    icon = Icons.Filled.CloudUpload,
-                    label = stringResource(R.string.settings_backup),
-                    subtitle = stringResource(R.string.settings_backup_subtitle),
-                    modifier = Modifier.clickable(onClick = onBackupClick)
-                ) {
-                    Icon(Icons.Filled.ChevronRight, contentDescription = null)
-                }
-            }
-
-            Spacer(modifier = Modifier.height(24.dp))
-        }
-    }
-}
-
-@Composable
-private fun SettingsSection(
-    title: String,
-    content: @Composable () -> Unit
-) {
-    Text(
-        text = title,
-        style = MaterialTheme.typography.labelLarge,
-        color = MaterialTheme.colorScheme.onBackground.copy(alpha = 0.6f)
-    )
-    Spacer(modifier = Modifier.height(8.dp))
-    Column(
-        modifier = Modifier
-            .fillMaxWidth()
-            .background(MaterialTheme.colorScheme.surfaceVariant, RoundedCornerShape(16.dp))
-    ) {
-        content()
-    }
-}
-
-@Composable
-private fun SettingsRow(
-    icon: ImageVector,
-    label: String,
-    modifier: Modifier = Modifier,
-    subtitle: String? = null,
-    trailing: @Composable () -> Unit
-) {
-    Row(
-        modifier = modifier
-            .fillMaxWidth()
-            .padding(horizontal = 16.dp, vertical = 14.dp),
-        verticalAlignment = Alignment.CenterVertically
-    ) {
-        Icon(
-            imageVector = icon,
-            contentDescription = null,
-            tint = MaterialTheme.colorScheme.primary,
-            modifier = Modifier.size(40.dp)
-        )
-        Spacer(modifier = Modifier.width(14.dp))
-
-        Column(modifier = Modifier.weight(1f)) {
-            Text(
-                text = label,
-                style = MaterialTheme.typography.bodyMedium,
-                color = MaterialTheme.colorScheme.onSurfaceVariant
-            )
-            if (subtitle != null) {
-                Text(
-                    text = subtitle,
-                    style = MaterialTheme.typography.labelSmall,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.6f)
+                    value = stringResource(R.string.settings_language_value),
+                    onClick = onLanguageClick
                 )
             }
+
+            Spacer(modifier = Modifier.height(20.dp))
+
+            SettingsSection(title = stringResource(R.string.settings_notifications)) {
+                SettingsSwitchRow(
+                    icon = Icons.Filled.Notifications,
+                    label = stringResource(R.string.settings_reminders),
+                    checked = remindersEnabled,
+                    onCheckedChange = { remindersEnabled = it }
+                )
+                SettingsSwitchRow(
+                    icon = Icons.Filled.VolumeUp,
+                    label = stringResource(R.string.settings_sounds),
+                    checked = soundsEnabled,
+                    onCheckedChange = { soundsEnabled = it }
+                )
+                SettingsSwitchRow(
+                    icon = Icons.Filled.Vibration,
+                    label = stringResource(R.string.settings_vibrations),
+                    checked = vibrationsEnabled,
+                    onCheckedChange = { vibrationsEnabled = it }
+                )
+            }
+
+            Spacer(modifier = Modifier.height(20.dp))
+
+            SettingsSection(title = stringResource(R.string.settings_data)) {
+                SettingsNavRow(
+                    icon = Icons.Filled.CloudUpload,
+                    label = stringResource(R.string.settings_backup),
+                    value = stringResource(R.string.settings_backup_value),
+                    onClick = onBackupClick
+                )
+            }
+
+            Spacer(modifier = Modifier.height(24.dp))
         }
-        trailing()
     }
 }
 
 @Composable
-private fun TrailingValueChevron(value: String) {
-    Row(verticalAlignment = Alignment.CenterVertically) {
+private fun SettingsSwitchRow(
+    icon: ImageVector,
+    label: String,
+    checked: Boolean,
+    onCheckedChange: (Boolean) -> Unit
+) {
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(vertical = 10.dp),
+        verticalAlignment = Alignment.CenterVertically
+    ) {
+        Icon(icon, contentDescription = null, tint = MaterialTheme.colorScheme.primary, modifier = Modifier.size(20.dp))
+        Spacer(modifier = Modifier.width(14.dp))
         Text(
-            text = value,
+            text = label,
             style = MaterialTheme.typography.bodyMedium,
-            color = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.6f)
+            color = MaterialTheme.colorScheme.onSurfaceVariant,
+            modifier = Modifier.weight(1f)
         )
-        Icon(
-            imageVector = Icons.Filled.ChevronRight,
-            contentDescription = null,
-            tint = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.6f)
+        Switch(
+            checked = checked,
+            onCheckedChange = onCheckedChange,
+            colors = SwitchDefaults.colors(
+                checkedThumbColor = MaterialTheme.colorScheme.primary,
+                checkedTrackColor = MaterialTheme.colorScheme.primary.copy(alpha = 0.4f)
+            )
         )
     }
 }

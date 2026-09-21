@@ -110,7 +110,7 @@
     <string name="settings_title">Paramètres</string>
     <string name="settings_general">Général</string>
     <string name="settings_theme">Thème</string>
-    <string name="settings_theme_dark">Sombre</string>
+    <string name="settings_theme_value">Sombre</string>
     <string name="settings_language">Langue</string>
     <string name="settings_language_value">Français</string>
     <string name="settings_notifications">Notifications</string>
@@ -119,6 +119,14 @@
     <string name="settings_vibrations">Vibrations</string>
     <string name="settings_data">Données</string>
     <string name="settings_backup">Sauvegarde</string>
-    <string name="settings_backup_subtitle">Dernière : Aujourd\'hui, 08:30</string>
+    <string name="settings_backup_value">Dernière : Aujourd\'hui, 08:30</string>
+
+    <string name="profile_completed_tasks">Tâches terminées</string>
+    <string name="profile_productive_days">Jours productifs</string>
+    <string name="profile_current_streak">Séries actuelles</string>
+    <string name="profile_categories">Catégories</string>
+    <string name="profile_statistics">Statistiques</string>
+    <string name="profile_settings">Paramètres</string>
+    <string name="profile_about">À propos de TaskFlow</string>
 
 </resources>

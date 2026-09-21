@@ -1,6 +1,7 @@
 package cm.sibcodelab.taskflow.presentation.tasklist
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -42,11 +43,13 @@ fun TaskListScreen(
     tasks: List<Task>,
     modifier: Modifier = Modifier,
     onAddTaskClick: () -> Unit = {},
+    selectedTab: BottomNavTab,
+    onTabSelected: (BottomNavTab) -> Unit,
+    onTaskClick: (Task) -> Unit = {},
     onTaskCheckedChange: (Task, Boolean) -> Unit = { _, _ -> }
 ) {
     var selectedFilter by remember { mutableStateOf(TaskFilter.ALL) }
     var searchQuery by remember { mutableStateOf("") }
-    var selectedTab by remember { mutableStateOf(BottomNavTab.TASKS) }
 
     val filteredTasks = tasks
         .filter { task ->
@@ -78,9 +81,9 @@ fun TaskListScreen(
         },
         bottomBar = {
             TaskFlowBottomBar(
+
                 selectedTab = selectedTab,
-                onTabSelected = { selectedTab = it }
-            )
+                onTabSelected = onTabSelected)
         },
         floatingActionButton = {
             FloatingActionButton(
@@ -128,10 +131,12 @@ fun TaskListScreen(
                 modifier = Modifier.weight(1f)
             ) {
                 items(filteredTasks, key = { it.id }) { task ->
-                    TaskItem(
-                        task = task,
-                        onCheckedChange = { checked -> onTaskCheckedChange(task, checked) }
-                    )
+                    Box(modifier = Modifier.clickable { onTaskClick(task) }) {
+                        TaskItem(
+                            task = task,
+                            onCheckedChange = { checked -> onTaskCheckedChange(task, checked) }
+                        )
+                    }
                 }
             }
         }
@@ -142,14 +147,6 @@ fun TaskListScreen(
 @Composable
 private fun TaskListScreenPreview() {
     TaskFlowTheme {
-        TaskListScreen(
-            tasks = listOf(
-                Task(1, "Finir le rapport de stage", "Détails du rapport", Priority.HIGH),
-                Task(2, "Réunion avec l'équipe", "", Priority.MEDIUM),
-                Task(3, "Réviser le cours de Kotlin", "", Priority.LOW, isCompleted = true),
-                Task(4, "Acheter des livres", "", Priority.MEDIUM),
-                Task(5, "Planifier le sprint", "", Priority.LOW)
-            )
-        )
+
     }
 }

@@ -1,6 +1,8 @@
 package cm.sibcodelab.taskflow.domain.model
 
+import kotlinx.serialization.Serializable
 
+@Serializable
 data class Task(
     val id: Long,
     val title: String,
@@ -10,6 +12,7 @@ data class Task(
     val dueDate: Long? = null
 )
 
+@Serializable
 enum class Priority {
     LOW,
     MEDIUM,
